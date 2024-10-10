@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/recibo.css">
+    <title>Recibo de Pagamento</title>
+</head>
+<body>
+
+    <div id="recibo">
+        <h2>Recibo de Pagamento</h2>
+        <textarea name="Documento" maxlength="250"cols="105" rows="25" 
+         id="Doc"></textarea>
+
+        <button id="limpardocumento" class ="imprimir" >Limpar documento</button>
+        <button onclick="imprimirRecibo()" class ="imprimir">Imprimir Recibo</button>
+        <a class ="imprimir" href="index.ejs">Voltar</a>
+
+    </div>
+
+    <br>
+
+</body>
+</html>
