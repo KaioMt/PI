@@ -9,7 +9,7 @@ app.get("/login", (req,res) => {
 })
 
 app.get("/cadastro", (req,res) => {
-    res.render("/Cadastro/cadastro")
+    res.render("Cadastro/cadastro")
 })
 
 app.get("/index", (req, res) => {
