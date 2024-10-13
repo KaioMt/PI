@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-	<title>Recupere sua senha</title>
-</head>
+<%- include('partials/header')%>
 
 <body>
 	<div class="container">
@@ -29,12 +20,11 @@
 				</div>
 
 				<input type="submit" class="btn" value="Recuperar">
-				<a href="login.ejs" id="cadastro-login">Fazer login</a>
+				<a href="login" id="cadastro-login">Fazer login</a>
 			</form>
 		</div>
 	</div>
-	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	<script type="text/javascript" src="../js/main.js "></script>
+
 </body>
 
-</html>
+<%- include('partials/footer')%>

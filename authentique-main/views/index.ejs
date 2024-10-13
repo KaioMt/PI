@@ -1,25 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href="/css/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-        <title>Inicio</title>
-    </head>
+<%- include('partials/header')%>
 
 <body>
-    <ul>
-        <li><a href="#home">Todos</a></li>
-        <li><a href="#news">Documentos assinados</a></li>
-        <li><a href="#contact">Pendentes</a></li>
-        <li><a href="#contact">Enviados</a></li>
-        <li style="float:right"><a class="active" href="Documento">Criar novo documento</a></li>
-        <li style="float:right"><a class="active" href="login">Sair</a></li>
-    </ul>
+    <%- include('partials/Navbar')%>
     <div class="container_centro">
         <h1 class="title">Bem-vindo</h1>
 
@@ -64,16 +46,14 @@
 
                     <% produtos.forEach(function(produto){ %>
                         <hr>
-                        <h3><%= produto.nome %></h3>
-                        <h3><%= produto.preço %></h3>
-                    <% }) %>
+                        <h3>
+                            <%= produto.nome %>
+                        </h3>
+                        <h3>
+                            <%= produto.preço %>
+                        </h3>
+                        <% }) %>
     </div>
 </body>
 
-<footer>
-    <h5> Criado por nós </h5>
-    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-</footer>
-
-</html>
+<%- include('partials/footer')%>

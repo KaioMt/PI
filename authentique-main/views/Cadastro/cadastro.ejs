@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" type="text/css" href="/css/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-	<title>Cadastro</title>
-</head>
+<%- include('partials/header')%>
 
 <body>
 	<img class="wave" src="../img/wave.png">
@@ -16,7 +7,7 @@
 			<img src="../img/cadastro.svg">
 		</div>
 		<div class="login-content">
-			<form action="cadastro_empresa.ejs">
+			<form action="/cadastro_empresa">
 				<img src="../img/avatar.svg">
 				<h2 class="title">Olá, vamos começar?</h2>
 				<div class="input-div one">
@@ -56,12 +47,10 @@
 					</div>
 				</div>
 				<input type="submit" class="btn" value="Cadastrar">
-				<a href="../login.ejs" id="cadastro-login">Fazer login com conta já existente</a>
+				<a href="/login" id="cadastro-login">Fazer login com conta já existente</a>
 			</form>
 		</div>
 	</div>
-	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	<script type="text/javascript" src="../js/main.js"></script>
 </body>
 
-</html>
+<%- include('partials/footer')%>
