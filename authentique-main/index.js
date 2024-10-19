@@ -2,8 +2,12 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+
+const Documento = require("./Database/documentos");
+
 //conexão com banco
 const connection = require("./Database/database");
+const { where } = require("sequelize");
 
 //Dastabase
 connection
@@ -15,6 +19,7 @@ connection
         console.log(msqErro);
     })
 
+
 app.set('view engine', 'ejs');
 app.use(express.static('Public'));
 
@@ -23,7 +28,7 @@ app.use(bodyParser.json());
 
 
 //Rotas
-app.get("/login", (req,res) => {
+app.get("/", (req,res) => {
     res.render("login")
 })
 
@@ -40,23 +45,14 @@ app.get("/cadastro_empresa", (req,res) => {
 })
 
 app.get("/index", (req, res) => {
-    let nome = "Kaião";
-    let lang = req.params.lang;
-    let exibirMsg = false;
-
-    let produto = [
-        { nome: "Doritos", preço: 3.14 },
-        { nome: "Coca-cola", preço: 5 },
-        { nome: "Leite", preço: 1.45 }
-    ]
-
-    res.render("index", {
-        nome: nome,
-        lang: lang,
-        teste: "Testando as coisas",
-        msg: exibirMsg,
-        produtos: produto
+    Documento.findAll({raw: true, order:[
+        ['id', 'ASC'] //ordenação por id
+    ]}).then(Documentos => {
+        res.render("index", {
+            documentos: Documentos
+        })
     })
+    
 });
 
 app.get("/Documento", (req,res) => {
@@ -67,8 +63,32 @@ app.post("/salvaDoc", (req, res) => {
     let destinatario= req.body.destinatario;
     let titulo = req.body.testa;
     let doc = req.body.Documento;
-res.send("Teste, destinatario " + destinatario + " " + " titulo " + titulo + " " + "Docuemnto " + doc);
+    Documento.create({
+        Titulo: titulo,
+        Conteudo: doc,
+        Status: 1,
+        Email_dest: destinatario
+    }).then(() => {
+        res.redirect("/index")
+    })
 })
+
+
+app.get("/documento/:id", (req, res) => {
+    let id = req.params.id;
+    Documento.findOne({
+        where: {id: id}
+    }).then(documento =>{
+        if(documento != undefined){
+            res.render("documento", {
+                doc: documento
+            });
+        }else{
+            res.redirect("/index")
+        }
+    })
+})
+
 
 app.listen(8080, () => {
     console.log("Servidor iniciado com sucesso!")

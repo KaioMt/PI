@@ -1,59 +1,34 @@
 <%- include('partials/header')%>
 
-<body>
-    <%- include('partials/Navbar')%>
-    <div class="container_centro">
-        <h1 class="title">Bem-vindo</h1>
+    <body>
 
-        <p>Nome: <%= nome %>
-        </p>
-        <p>Linguagem: <%= lang %>
-        </p>
-        <p>
-            <%= teste %>
-        </p>
+        <%- include('partials/Navbar')%>
+            <div class="container_centro">
 
-        <% if(msg){ %>
-            <h3>Mensagem de erro!</h3>
-            <%} else{ %>
-                <h3>Não há erro</h3>
-                <%}%>
-
-
-                    <p>Documento 1</p>
+                <br><br><!--Não sou obrigado a fazer o front. Vão se fuder-->
+                <% documentos.forEach(documento=> { %>
                     <div class="item">
-                        <h5> Lorem ipsum fames elementum habitant cras ullamcorper ipsum iaculis nisl, duis tellus ut
-                            aenean dapibus
-                            curabitur mattis cursus platea
-                            turpis, metus sollicitudin laoreet vel nisl feugiat consectetur hac. consectetur duis
-                            posuere erat ac
-                            elementum augue praesent, aptent
-                            pharetra lacinia donec ac euismod, platea rhoncus venenatis etiam libero phasellus. duis
-                            ullamcorper sem
-                            viverra vulputate nostra
-                            ultrices tincidunt elit lectus, nisl porta nostra cubilia consequat sagittis tincidunt nisl.
-                            porta
-                            aliquam taciti torquent sollicitudin
-                            quis bibendum facilisis id elit pretium tempor, ipsum hendrerit vitae laoreet aptent erat
-                            suscipit porta
-                            senectus mattis class quisque,
-                            nam adipiscing eu fusce morbi augue ut hendrerit laoreet a. </h5>
+                        <h2 class="title">
+                            <%= documento.Titulo %>
+                        </h2>
+                        <h3>
+                            <%= documento.Email_dest %>
+                        </h3>
+                        <p>
+                            <%= documento.Conteudo %>
+                        </p>
                         <div class="container_botao">
                             <input id="botao" type="submit" class="botao_editar" value="Editar">
                             <input id="botao" type="submit" class="botao_excluir" value="Excluir">
                         </div>
                     </div>
+                    
+                <% }) %>
 
-                    <% produtos.forEach(function(produto){ %>
-                        <hr>
-                        <h3>
-                            <%= produto.nome %>
-                        </h3>
-                        <h3>
-                            <%= produto.preço %>
-                        </h3>
-                        <% }) %>
-    </div>
-</body>
+            </div>
 
-<%- include('partials/footer')%>
+
+            </div>
+    </body>
+
+    <%- include('partials/footer')%>

@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `destinatários`
+--
+
+DROP TABLE IF EXISTS `destinatários`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `destinatários` (
+  `ID` int NOT NULL,
+  `Nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `Situação` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `destinatários`
+--
+
+LOCK TABLES `destinatários` WRITE;
+/*!40000 ALTER TABLE `destinatários` DISABLE KEYS */;
+/*!40000 ALTER TABLE `destinatários` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `documento`
 --
 
@@ -30,11 +55,18 @@ CREATE TABLE `documento` (
   `Data_criacao` date NOT NULL,
   `Data_modificação` date NOT NULL,
   `Empresa` int NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `FK1_status` (`Status`),
-  CONSTRAINT `FK1_status` FOREIGN KEY (`Status`) REFERENCES `statusdocumento` (`ID`)
+  PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `documento`
+--
+
+LOCK TABLES `documento` WRITE;
+/*!40000 ALTER TABLE `documento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `documento` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `empresa`
@@ -49,25 +81,21 @@ CREATE TABLE `empresa` (
   `Nome` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `Endereco` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `Telefone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  PRIMARY KEY (`Id`)
+  `Id_documento` int NOT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `FK1_documento` (`Id_documento`),
+  CONSTRAINT `FK1_documento` FOREIGN KEY (`Id_documento`) REFERENCES `documento` (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Table structure for table `statusdocumento`
+-- Dumping data for table `empresa`
 --
 
-DROP TABLE IF EXISTS `statusdocumento`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `statusdocumento` (
-  `ID` int NOT NULL,
-  `Assinados` varchar(255) NOT NULL,
-  `Pendentes` varchar(255) NOT NULL,
-  `EmEdicao` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+LOCK TABLES `empresa` WRITE;
+/*!40000 ALTER TABLE `empresa` DISABLE KEYS */;
+/*!40000 ALTER TABLE `empresa` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `usuario`
@@ -87,6 +115,15 @@ CREATE TABLE `usuario` (
   CONSTRAINT `FK_empresa` FOREIGN KEY (`Empresa_Id`) REFERENCES `empresa` (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -97,4 +134,4 @@ CREATE TABLE `usuario` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-10-08 12:44:51
+-- Dump completed on 2024-10-13 20:22:37
