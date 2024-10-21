@@ -18,3 +18,7 @@ inputs.forEach(input => {
 	input.addEventListener("focus", addcl);
 	input.addEventListener("blur", remcl);
 });
+
+function setInputValue() {
+	document.getElementById('editar_doc').value = 'Este é o valor inserido!';
+}
