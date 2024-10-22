@@ -4,6 +4,9 @@ const app = express();
 const bodyParser = require("body-parser");
 
 const Documento = require("./Database/documentos");
+const Usuario = require("./Database/usuario");
+const Empresa = require("./Database/empresa");
+
 
 //conexão com banco
 const connection = require("./Database/database");
@@ -61,7 +64,7 @@ app.get("/Documento", (req,res) => {
 
 app.post("/salvaDoc", (req, res) => {
     let destinatario= req.body.destinatario;
-    let titulo = req.body.testa;
+    let titulo = req.body.Titulo;
     let doc = req.body.Documento;
     Documento.create({
         Titulo: titulo,
@@ -70,6 +73,35 @@ app.post("/salvaDoc", (req, res) => {
         Email_dest: destinatario
     }).then(() => {
         res.redirect("/index")
+    })
+})
+
+
+app.post("/salvaUse", (req, res) => {
+    let nome= req.body.nome;
+    let email = req.body.email;
+    let senha = req.body.senha;
+    Usuario.create({
+        Nome: nome,
+        Email: email,
+        Senha: senha
+    }).then(() => {
+        res.redirect("/cadastro_empresa")
+    })
+})
+
+
+app.post("/salvaEmpresa", (req, res) => {
+    let Razao= req.body.razao;
+    let CNPJ = req.body.cnpj;
+    let Nome = req.body.fantasia;
+    let Endereco = req.body.endereco;
+    Empresa.create({
+        CNPJ: CNPJ,
+        Nome: Razao,
+        Endereco: Endereco
+    }).then(() => {
+        res.redirect("/")
     })
 })
 

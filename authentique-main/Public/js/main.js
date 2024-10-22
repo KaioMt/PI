@@ -1,5 +1,6 @@
-const inputs = document.querySelectorAll(".input");
+const documentos = require("../../Database/documentos");
 
+const inputs = document.querySelectorAll(".input");
 
 function addcl(){
 	let parent = this.parentNode.parentNode;
@@ -19,6 +20,8 @@ inputs.forEach(input => {
 	input.addEventListener("blur", remcl);
 });
 
-function setInputValue() {
-	document.getElementById('editar_doc').value = 'Este é o valor inserido!';
+function setInputValue(titulo, email, texto) {
+	document.getElementById('Titulo').value =  titulo;
+	document.getElementById('email').value = email;
+	document.getElementById('Doc').value = texto;
 }

@@ -6,6 +6,7 @@
             <div class="container_centro">
 
                 <br><br><!--Não sou obrigado a fazer o front. Vão se fuder-->
+                
                 <% documentos.forEach(documento=> { %>
                     <div class="item">
                         <h2 class="title">
@@ -18,8 +19,7 @@
                             <%= documento.Conteudo %>
                         </p>
                         <div class="container_botao">
-                            <input id="botao" type="submit" class="botao_editar" value="Editar">
-                            <input id="botao" type="submit" class="botao_excluir" value="Excluir">
+                            <a href="/documento/<%= documento.ID %>"><button></button></a>
                         </div>
                     </div>
                     

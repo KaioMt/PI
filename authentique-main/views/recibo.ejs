@@ -13,10 +13,10 @@
     <div id="recibo">
         <form method="POST" action="/salvaDoc">
             <h2>Recibo de Pagamento</h2>
-            <input type="email" name="destinatario">
+            <input type="email" name="destinatario" id="email">
             <br><br><br>
 
-            <input type="text" name="testa" id="">
+            <input type="text" name="Titulo" id="Titulo">
             <br><br>
             <textarea name="Documento" maxlength="240" cols="100" rows="25" id="Doc"></textarea>
 
@@ -31,4 +31,4 @@
 
 </body>
 
-</html>
+<%- include('partials/footer')%>
