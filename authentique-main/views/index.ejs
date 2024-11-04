@@ -1,34 +1,113 @@
-<%- include('partials/header')%>
+<!DOCTYPE html>
+<html lang="pt-br">
 
-    <body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <title>Inicio</title>
+</head>
 
-        <%- include('partials/Navbar')%>
-            <div class="container_centro">
+<body>
 
-                <br><br><!--Não sou obrigado a fazer o front. Vão se fuder-->
-                
-                <% documentos.forEach(documento=> { %>
-                    <div class="item">
-                        <h2 class="title">
-                            <%= documento.Titulo %>
-                        </h2>
-                        <h3>
-                            <%= documento.Email_dest %>
-                        </h3>
-                        <p>
-                            <%= documento.Conteudo %>
-                        </p>
-                        <div class="container_botao">
-                            <a href="/documento/<%= documento.ID %>"><button></button></a>
-                        </div>
-                    </div>
-                    
-                <% }) %>
+    <%- include('partials/Navbar')%>
+        <div class="container_centro" id="lista">
 
-            </div>
+            <br><br><!--Não sou obrigado a fazer o front. Vão se fuder-->
+
+        </div>
 
 
-            </div>
-    </body>
+        </div>
+</body>
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script>
+    axios.get("http://localhost:8080/index").then(response => {
+        let documentos = response.data;
+        let list = document.getElementById("lista")
 
-    <%- include('partials/footer')%>
+        function deleteDoc(listDoc) {
+            let id = listDoc.getAttribute("data-id");
+            axios.delete("http://localhost:8080/documento/" + id).then(response => {
+                alert("Documento deletado!")
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+
+        function loadDoc (listDoc){
+            let id = listDoc.getAttribute("data-id");
+            let titulo = listDoc.getAttribute("data-title");
+            let email = listDoc.getAttribute("data-desti");
+            let conteudo = listDoc.getAttribute("data-conteudo");
+
+            const dataToSend = { ID: id, title: titulo, dest: email, doc: conteudo};
+            localStorage.setItem('userInfo', JSON.stringify(dataToSend));
+
+            sessionStorage.setItem('userInfo', JSON.stringify(dataToSend));
+
+            window.location.href = '/Documento';
+        }
+
+        documentos.forEach(doc => {
+            let Item = document.createElement('div');
+            Item.classList.add('item');
+
+            Item.setAttribute("data-id", doc.ID);
+            Item.setAttribute("data-title", doc.Titulo);
+            Item.setAttribute("data-desti", doc.Email_dest);
+            Item.setAttribute("data-conteudo", doc.Conteudo)
+
+
+            let h2Title = document.createElement('h2');
+            h2Title.classList.add('title');
+            h2Title.innerHTML = doc.Titulo;
+            list.appendChild(h2Title);
+            Item.appendChild(h2Title);
+
+
+            let h3Element = document.createElement('h3');
+            h3Element.innerHTML = doc.Email_dest;
+            list.appendChild(h3Element);
+            Item.appendChild(h3Element);
+
+
+            let pElement = document.createElement('p');
+            pElement.innerHTML = doc.Conteudo;
+            Item.appendChild(pElement);
+
+
+            const ContainerBtn = document.createElement('div');
+            ContainerBtn.classList.add('container_botao');
+
+
+            let btnExcluir = document.createElement('button');
+            btnExcluir.textContent = 'Excluir';
+            btnExcluir.classList.add('botao1'); // Adiciona uma classe para estilização, se necessário
+            btnExcluir.onclick = () => {
+                deleteDoc(Item)
+            };
+            ContainerBtn.appendChild(btnExcluir);
+
+            let btnEditar = document.createElement('button');
+            btnEditar.textContent = 'Editar';
+            btnEditar.classList.add('botao2'); // Adiciona uma classe para estilização, se necessário
+            btnEditar.onclick = () => {
+                loadDoc(Item);
+            };
+            ContainerBtn.appendChild(btnEditar);
+
+            Item.appendChild(ContainerBtn);
+
+            list.appendChild(Item);
+        });
+    }).catch(error => {
+        console.log(error)
+    })
+
+</script>
+<script type="text/javascript" src="../js/main.js"></script>
+
+</html>

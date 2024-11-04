@@ -11,17 +11,15 @@
 <body>
 
     <div id="recibo">
-        <form method="POST" action="/salvaDoc">
-            <h2>Recibo de Pagamento</h2>
-            <input type="email" name="destinatario" id="email">
-            <br><br><br>
+        <h2>Recibo de Pagamento</h2>
+        <input type="text" name="title" id="title">
+        <br><br><br>
 
-            <input type="text" name="Titulo" id="Titulo">
-            <br><br>
-            <textarea name="Documento" maxlength="240" cols="100" rows="25" id="Doc"></textarea>
+        <input type="texte" name="destinatario" id="destinatario">
+        <br><br>
+        <textarea name="documento" maxlength="240" cols="100" rows="25" id="documento"></textarea>
 
-            <button class="imprimir">Salvar Documento</button>
-        </form>
+        <button class="imprimir" onclick="updateCreatDoc()">Salvar Documento</button>
         <button id="limpardocumento" class="imprimir">Limpar documento</button>
         <a class="imprimir" href="index">Voltar</a>
 
@@ -31,4 +29,51 @@
 
 </body>
 
-<%- include('partials/footer')%>
+<script src="https://kit.fontawesome.com/a81368914c.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+<script>
+
+    const dataReceived = JSON.parse(localStorage.getItem('userInfo'));
+
+        id = dataReceived.ID;
+
+        document.getElementById("title").value = dataReceived.title;
+        document.getElementById("destinatario").value = dataReceived.dest;
+        document.getElementById("documento").value = dataReceived.doc;
+
+
+        function updateCreatDoc(){ 
+            let inputTitle = document.getElementById("title");
+            let inputDest = document.getElementById("destinatario");
+            let inputDoc = document.getElementById("documento");
+
+            let Documento = {
+                titulo: inputTitle.value,
+                doc: inputDoc.value,
+                destinatario: inputDest.value
+            }
+
+            if (dataReceived) {
+            axios.put("http://localhost:8080/documento/"+id, Documento).then(response => {
+                if (response.status === 200) {
+                    alert("Docuemtno atualizado")
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+            localStorage.clear();
+            }
+             else {
+            axios.post("http://localhost:8080/documento", Documento).then(response => {
+                if (response.status === 200) {
+                    alert("Docuemtno cadastrado")
+                }
+            }).catch(err => {
+                console.log(err);
+            })
+        }
+    }
+</script>
+<script type="text/javascript" src="../js/main.js"></script>
+
+</html>

@@ -1,5 +1,3 @@
-const documentos = require("../../Database/documentos");
-
 const inputs = document.querySelectorAll(".input");
 
 function addcl(){

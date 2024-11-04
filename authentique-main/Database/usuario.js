@@ -37,8 +37,8 @@ const Usuario = connection.define('Usuario', {
     collate: 'utf8mb4_0900_ai_ci'
   });
 
-  connection.sync()
-  .then(() => console.log('Tabela Usuarios criada ou sincronizada com sucesso!'))
-  .catch(err => console.error('Erro ao sincronizar a tabela Usuarios:', err));
+  //connection.sync()
+  //.then(() => console.log('Tabela Usuarios criada ou sincronizada com sucesso!'))
+  //.catch(err => console.error('Erro ao sincronizar a tabela Usuarios:', err));
   
   module.exports = Usuario;

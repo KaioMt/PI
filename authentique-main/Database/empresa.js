@@ -36,8 +36,8 @@ const Empresa = connection.define('Empresa', {
   timestamps: false, // Remova se você quiser timestamps automáticos (createdAt, updatedAt)
 });
 
-connection.sync()
-.then(() => console.log('Tabela Empresa criada ou sincronizada com sucesso!'))
-.catch(err => console.error('Erro ao sincronizar a tabela Empresa:', err));
+//connection.sync()
+//.then(() => console.log('Tabela Empresa criada ou sincronizada com sucesso!'))
+//.catch(err => console.error('Erro ao sincronizar a tabela Empresa:', err));
 
 module.exports = Empresa;

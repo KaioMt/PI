@@ -34,8 +34,8 @@ const documentos = connection.define('Documentos', {
     }
   });
 
-  connection.sync()
-   .then(() => console.log('Tabela Documentos criada ou sincronizada com sucesso!'))
-   .catch(err => console.error('Erro ao sincronizar a tabela Documentos:', err));
+  //connection.sync()
+   //.then(() => console.log('Tabela Documentos criada ou sincronizada com sucesso!'))
+   //.catch(err => console.error('Erro ao sincronizar a tabela Documentos:', err));
 
 module.exports = documentos;
