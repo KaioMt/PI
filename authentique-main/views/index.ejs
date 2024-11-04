@@ -1,0 +1,35 @@
+<%- include('partials/header')%>
+
+    <body>
+
+        <%- include('partials/Navbar')%>
+            <div class="container_centro">
+
+                <br><br><!--Não sou obrigado a fazer o front. Vão se fuder-->
+                <% documentos.forEach(documento=> { %>
+                    <div class="item">
+                        <h2 class="title">
+                            <%= documento.Titulo %>
+                        </h2>
+                        <h3>
+                            <%= documento.Email_dest %>
+                        </h3>
+                        <p>
+                            <%= documento.Conteudo %>
+                        </p>
+                        <div class="container_botao">
+                            <input id="botao" type="submit" class="botao_enviar" value="⎘">
+                            <input id="botao" type="submit" class="botao_editar" value="✎">
+                            <input id="botao" type="submit" class="botao_excluir" value="🗑">
+                        </div>
+                    </div>
+                    
+                <% }) %>
+
+            </div>
+
+
+            </div>
+    </body>
+
+    <%- include('partials/footer')%>
