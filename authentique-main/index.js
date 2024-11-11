@@ -60,7 +60,7 @@ app.get("/Documento", (req,res) => {
 
 
 
-app.get("/index", async (req, res) => {
+app.get("/documentos", async (req, res) => {
     res.statusCode = 200;
     let documentos = await  Documento.findAll({raw: true, order:[
         ['id', 'ASC']
