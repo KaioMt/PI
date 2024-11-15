@@ -8,6 +8,7 @@ body {
 	font-family: 'Poppins', sans-serif;
 	height: 200;
 	overflow:auto;
+	background-color: #32be8f;
 }
 
 #cadastroempresa{
@@ -40,8 +41,8 @@ ul {
   }
   
   .active {
-	  border: solid 0.5px black;
-	background-color: #04AA6D;
+	border: solid 0.5px black;
+	background-color: #32be8f;
   }
 
 .title{
@@ -71,7 +72,14 @@ ul {
 	flex-direction:column;
 	align-items: center;
 	justify-content: center;
+	background-color: #32be8f;
 }
+
+#container_recibo{
+	width: 100vw;
+	height: 100vh;
+}
+
 
 .container_botao{
 	display: flex;
@@ -80,7 +88,7 @@ ul {
 
 
 #botao{
-	width: 200px;
+	width: 70px;
 	margin-left: 10px;
 }
 
@@ -88,7 +96,10 @@ ul {
 	width: 90%;
 	margin-top: 10px;
 	padding: 10px;
-	border: 1px solid black;
+	margin-bottom: 10px;
+	border: 1px solid lightgreen;
+	background-color: #ffffffc8;
+	border-radius: 5px;
 }
 
 .container_img {
@@ -260,7 +271,7 @@ a:hover {
 	border: none;
 	background-image: linear-gradient(to right, #be3232, #d33838, #be3232);
 	background-size: 200%;
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	color: #fff;
 	font-family: 'Poppins', sans-serif;
 	text-transform: uppercase;
@@ -297,14 +308,14 @@ a:hover {
 
 .botao_editar {
 	display: block;
-	width: 100%;
 	height: 50px;
+	width: 100%;
 	border-radius: 25px;
 	outline: none;
 	border: none;
-	background-image: linear-gradient(to right, #4ebe32, #38d35f, #4ebe32);
+	background-image: linear-gradient(to right, #f1870e, #e69436, #f1870e);
 	background-size: 200%;
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	color: #fff;
 	font-family: 'Poppins', sans-serif;
 	text-transform: uppercase;
@@ -315,6 +326,98 @@ a:hover {
 
 .botao_editar {
 	background-position: right;
+}
+
+.botao_enviar {
+	display: block;
+	width: 100%;
+	height: 50px;
+	border-radius: 25px;
+	outline: none;
+	border: none;
+	background-image: linear-gradient(to right, #038656, #23976d, #038656);
+	background-size: 200%;
+	font-size: 1.5rem;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+	text-transform: uppercase;
+	margin: 1rem 0;
+	cursor: pointer;
+	transition: .5s;
+}
+
+.botao_enviar:hover {
+	background-position: right;
+}
+
+#salvardocumento{
+	background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+#salvardocumento:hover{
+	background-color: #0056b3;
+}
+
+#limpardocumento{
+	background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+#limpardocumento:hover{
+	background-color: #0056b3;
+}
+
+
+#destinatario{
+	background-color: #ffffffc8;
+	border-radius: 5px;
+	margin-left: 70px;
+	border: solid 1px lightgreen;
+}
+
+#titulodoc{
+	background-color: #ffffffc8;
+	border-radius: 5px;
+	margin-left: 70px;
+	border: solid 1px lightgreen;
+}
+
+#Doc{
+	background-color: #ffffffc8;
+	border-radius: 5px;
+	margin-left: -200px;
+	border: solid 1px lightgreen;
+}
+
+#tela{
+	height: 200;
+}
+
+.titulodocum{
+	margin-left: 80px;
+}
+
+#titulogeral{
+	margin-right: 120px;
 }
 
 footer{

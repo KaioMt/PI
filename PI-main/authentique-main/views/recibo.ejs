@@ -1,0 +1,28 @@
+<%- include('partials/header')%>
+
+<body>
+
+    <%- include('partials/Navbar')%>
+    <div class="container_centro" id="container_recibo">
+        <h1 class="titulodocum" id="titulogeral">Documento</h1>
+        <form method="POST" action="/salvaDoc">
+           <div>
+            <h5 class="titulodocum">Informe o destinatário:</h5>
+            <input id="destinatario" type="email" name="destinatario">
+            </div>
+            <div>
+            <h5 class="titulodocum">Título do documento:</h5>
+            <input type="text" name="testa" id="titulodoc">
+            </div>
+            <br><br>
+            <textarea name="Documento" maxlength="240" cols="100" rows="25" id="Doc"></textarea>
+            <button class="imprimir" id="salvardocumento">Salvar Documento</button>
+            <button id="limpardocumento" class="imprimir">Limpar documento</button>
+        </form>
+    </div>
+
+    <br>
+
+</body>
+
+<%- include('partials/footer')%>

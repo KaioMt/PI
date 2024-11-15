@@ -1,0 +1,39 @@
+<%- include('partials/header')%>
+
+<body>
+	<img class="wave" src="img/wave.png">
+	<div class="container">
+		<div class="img">
+			<img src="img/login.svg">
+		</div>
+		<div class="login-content">
+			<form action="index">
+				<img src="../img/avatar.svg">
+				<h2 class="title">Bem-vindo</h2>
+				<div class="input-div one">
+					<div class="i">
+						<i class="fas fa-user"></i>
+					</div>
+					<div class="div">
+						<h5>Usuário</h5>
+						<input type="text" class="input" required>
+					</div>
+				</div>
+				<div class="input-div pass">
+					<div class="i">
+						<i class="fas fa-lock"></i>
+					</div>
+					<div class="div">
+						<h5>Senha</h5>
+						<input type="password" class="input" required>
+					</div>
+				</div>
+				<a href="/recuperar">Esqueceu sua senha?</a>
+				<input type="submit" class="btn" value="Login">
+				<a href="cadastro" id="cadastro-login">Cadastre-se</a>
+			</form>
+		</div>
+	</div>
+</body>
+
+<%- include('partials/footer')%>

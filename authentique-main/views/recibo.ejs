@@ -2,30 +2,35 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/recibo.css">
-    <title>Recibo de Pagamento</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Inicio</title>
 </head>
 
 <body>
 
-    <div id="recibo">
-        <h2>Recibo de Pagamento</h2>
-        <input type="text" name="title" id="title">
-        <br><br><br>
+    <%- include('partials/Navbar')%>
+        <div class="container_centro" id="container_recibo">
+            <h1 class="titulodocum" id="titulogeral">Documento</h1>
+            <form>
+                <div>
+                    <h5 class="titulodocum">Informe o destinatário:</h5>
+                    <input id="destinatario" type="email" name="destinatario">
+                </div>
+                <h5 class="titulodocum">Título do documento:</h5>
+                <input type="text" name="title" id="titulodoc">
+                <br><br>
+                <textarea name="documento" maxlength="240" cols="100" rows="25" id="Doc"></textarea>
 
-        <input type="texte" name="destinatario" id="destinatario">
-        <br><br>
-        <textarea name="documento" maxlength="240" cols="100" rows="25" id="documento"></textarea>
+                <button class="imprimir" id="salvardocumento" onclick="updateCreatDoc()">Salvar Documento</button>
+                <button id="limpardocumento" class="imprimir"><a href="/principal"></a>Voltar</button>
+            </form>
+        </div>
 
-        <button class="imprimir" onclick="updateCreatDoc()">Salvar Documento</button>
-        <button id="limpardocumento" class="imprimir">Limpar documento</button>
-        <a class="imprimir" href="index">Voltar</a>
-
-    </div>
-
-    <br>
+        <br>
 
 </body>
 
@@ -35,26 +40,26 @@
 
     const dataReceived = JSON.parse(localStorage.getItem('userInfo'));
 
-        id = dataReceived.ID;
+    id = dataReceived.ID;
 
-        document.getElementById("title").value = dataReceived.title;
-        document.getElementById("destinatario").value = dataReceived.dest;
-        document.getElementById("documento").value = dataReceived.doc;
+    document.getElementById("titulodoc").value = dataReceived.title;
+    document.getElementById("destinatario").value = dataReceived.dest;
+    document.getElementById("Doc").value = dataReceived.doc;
 
 
-        function updateCreatDoc(){ 
-            let inputTitle = document.getElementById("title");
-            let inputDest = document.getElementById("destinatario");
-            let inputDoc = document.getElementById("documento");
+    function updateCreatDoc() {
+        let inputTitle = document.getElementById("titulodoc");
+        let inputDest = document.getElementById("destinatario");
+        let inputDoc = document.getElementById("Doc");
 
-            let Documento = {
-                titulo: inputTitle.value,
-                doc: inputDoc.value,
-                destinatario: inputDest.value
-            }
+        let Documento = {
+            titulo: inputTitle.value,
+            doc: inputDoc.value,
+            destinatario: inputDest.value
+        }
 
-            if (dataReceived) {
-            axios.put("http://localhost:8080/documento/"+id, Documento).then(response => {
+        if (dataReceived) {
+            axios.put("http://localhost:8080/documento/" + id, Documento).then(response => {
                 if (response.status === 200) {
                     alert("Docuemtno atualizado")
                 }
@@ -62,8 +67,8 @@
                 console.log(err);
             })
             localStorage.clear();
-            }
-             else {
+        }
+        else {
             axios.post("http://localhost:8080/documento", Documento).then(response => {
                 if (response.status === 200) {
                     alert("Docuemtno cadastrado")
