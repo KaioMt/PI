@@ -1,39 +1,60 @@
 <%- include('partials/header')%>
 
-<body>
-	<img class="wave" src="img/wave.png">
-	<div class="container">
-		<div class="img">
-			<img src="img/login.svg">
+	<body>
+		<img class="wave" src="img/wave.png">
+		<div class="container">
+			<div class="img">
+				<img src="../img/login.svg">
+			</div>
+			<div class="login-content">
+				<form>
+					<img src="../img/avatar.svg">
+					<h2 class="title">Bem-vindo</h2>
+					<div class="input-div one">
+						<div class="i">
+							<i class="fas fa-user"></i>
+						</div>
+						<div class="div">
+							<h5>Usuário</h5>
+							<input type="text" class="input" required>
+						</div>
+					</div>
+					<div class="input-div pass">
+						<div class="i">
+							<i class="fas fa-lock"></i>
+						</div>
+						<div class="div">
+							<h5>Senha</h5>
+							<input type="password" class="input" required>
+						</div>
+					</div>
+					<a href="/recuperar">Esqueceu sua senha?</a>
+					<button class="btn" onclick=" logar()">Login</button>
+					<a href="/usuario/cadastro" id="cadastro-login">Cadastre-se</a>
+				</form>
+			</div>
 		</div>
-		<div class="login-content">
-			<form action="/login">
-				<img src="../img/avatar.svg">
-				<h2 class="title">Bem-vindo</h2>
-				<div class="input-div one">
-					<div class="i">
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="div">
-						<h5>Usuário</h5>
-						<input type="text" class="input" required>
-					</div>
-				</div>
-				<div class="input-div pass">
-					<div class="i">
-						<i class="fas fa-lock"></i>
-					</div>
-					<div class="div">
-						<h5>Senha</h5>
-						<input type="password" class="input" required>
-					</div>
-				</div>
-				<a href="/recuperar">Esqueceu sua senha?</a>
-				<input type="submit" class="btn" value="Login">
-				<a href="/usuario/cadastro" id="cadastro-login">Cadastre-se</a>
-			</form>
-		</div>
-	</div>
-</body>
+	</body>
 
-<%- include('partials/footer')%>
+	<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+	<script>
+
+		let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibm9tZSI6InRlc3RlIiwiZW1haWwiOiJ0ZXN0ZSIsImVtcHJlc2EiOm51bGwsImlhdCI6MTczMTg5MTQ4NCwiZXhwIjoxNzMxOTM0Njg0fQ.cUqkncgjkG6RQJneJCA9-27G8Cgz8wpynQT3w_X24cg"
+		function logar() {
+			event.preventDefault();
+			
+			let axiosConfig = {
+				headers: {
+					Authorization: "Bearer" + token
+				}
+			}
+			axios.get("http://localhost:8080/documento/principal", axiosConfig).then(response => {
+
+			}).cath(error => {
+				console.log(error)
+			})
+		}
+	</script>
+	<script type="text/javascript" src="../js/main.js"></script>
+
+	</html>

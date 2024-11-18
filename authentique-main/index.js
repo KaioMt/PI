@@ -6,8 +6,7 @@ const cors = require("cors");
 
 const router = require("./router")
 
-
-//conexão com banco
+//conexão com bancos
 
 const connection = require("./Database/database");
 const { where } = require("sequelize");
@@ -25,11 +24,8 @@ connection
 
 app.set('view engine', 'ejs');
 app.use(express.static('Public'));
-
 app.use(cors());
-
-app.use(bodyParser.urlencoded({extended: false}));
-// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use("/", bodyParser.json(), router)

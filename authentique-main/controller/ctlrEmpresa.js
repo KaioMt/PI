@@ -1,7 +1,7 @@
 const express = require("express");
 const ctlrEmpresa = express.Router();
 
-const Empresa = require("./Database/empresa");
+const Empresa = require("../Database/empresa");
 
 ctlrEmpresa.get("/cadastro_empresa", (req,res) => {
     res.render("Cadastro/cadastro_empresa")

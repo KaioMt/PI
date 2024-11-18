@@ -1,10 +1,10 @@
 const express = require("express");
+const jwt = require("jsonwebtoken"); 
 const ctlrUsuario = express.Router();
 
-const Usuario = require("./Database/usuario");
+const Usuario = require("../Database/usuario");
 
-
-router.get("/cadastro", (req,res) => {
+ctlrUsuario.get("/cadastro", (req,res) => {
   res.render("Cadastro/cadastro")
 })
 
@@ -13,22 +13,39 @@ ctlrUsuario.get("/login", (req,res) => {
   res.render("login")
 })
 
+const JWTScret = "123456789"
+
 ctlrUsuario.post("/login", async (req, res) => {
-        const { email, senha } = req.body;
-      
+        let { email, senha } = req.body;
+
+        if(email != undefined & senha != undefined){
         try {
-          const usuario = await Usuario.findOne({ where: { email, senha } });
+          let usuario = await Usuario.findOne({ where: { email, senha } });
       
           if (!usuario) {
             return res.status(401).json({ mensagem: 'Credenciais inválidas' });
           }
           else{
-          return res.json({ mensagem: 'Login realizado com sucesso' });
+
+            const token = jwt.sign(
+              { id: usuario.Id, nome: usuario.Nome, email: usuario.Email, empresa: usuario.Empresa_Id },
+              JWTScret,
+              { expiresIn: '12h' }
+            );
+          res.status(200).json({ Token: token, 
+            mensagem: 'Login realizado com sucesso' });
         }
         } catch (error) {
           console.error(error);
           return res.status(500).json({ mensagem: 'Erro no servidor' });
         }
+      }else{
+        if (email == undefined){
+          return res.status(400).json({ mensagem: 'Email é inválido' });
+        } else{
+          return res.status(400).json({ mensagem: 'Senha é inválido' });
+        }
+      }
 });
 
 ctlrUsuario.post("/", (req, res) => {

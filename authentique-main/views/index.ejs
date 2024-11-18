@@ -36,6 +36,7 @@
             }).catch(err => {
                 console.log(err)
             })
+            location.reload()
         }
 
         function loadDoc (listDoc){
@@ -49,7 +50,7 @@
 
             sessionStorage.setItem('userInfo', JSON.stringify(dataToSend));
 
-            window.location.href = '/recibo';
+            window.location.href = 'documento/recibo';
         }
 
         documentos.forEach(doc => {
@@ -65,19 +66,13 @@
             let h2Title = document.createElement('h2');
             h2Title.classList.add('title');
             h2Title.innerHTML = doc.Titulo;
-            list.appendChild(h2Title);
-            Item.appendChild(h2Title);
-
 
             let h3Element = document.createElement('h3');
             h3Element.innerHTML = doc.Email_dest;
-            list.appendChild(h3Element);
-            Item.appendChild(h3Element);
 
 
             let pElement = document.createElement('p');
             pElement.innerHTML = doc.Conteudo;
-            Item.appendChild(pElement);
 
 
             const ContainerBtn = document.createElement('div');
@@ -91,7 +86,6 @@
             btnExcluir.onclick = () => {
                 deleteDoc(Item)
             };
-            ContainerBtn.appendChild(btnExcluir);
 
             let btnEditar = document.createElement('button');
             btnEditar.textContent = '✎';
@@ -100,14 +94,20 @@
             btnEditar.onclick = () => {
                 loadDoc(Item);
             };
-            ContainerBtn.appendChild(btnEditar);
+
 
             let btnEnviar = document.createElement('button');
             btnEnviar.textContent = '⎘';
             btnEnviar.setAttribute("id", "botao");
             btnEnviar.classList.add('botao_enviar'); // Adiciona uma classe para estilização, se necessário
+
+            ContainerBtn.appendChild(btnExcluir);
+            ContainerBtn.appendChild(btnEditar);
             ContainerBtn.appendChild(btnEnviar);
 
+            Item.appendChild(h2Title);
+            Item.appendChild(h3Element);
+            Item.appendChild(pElement);
             Item.appendChild(ContainerBtn);
 
             list.appendChild(Item);

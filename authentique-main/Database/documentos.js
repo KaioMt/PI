@@ -26,10 +26,12 @@ const documentos = connection.define('Documentos', {
     },
     Empresa: {
       type: Sequelize.INTEGER,
-      allowNull: true, // Pode ser nulo
+      model: 'empresa',
+      allowNull: true // Pode ser nulo
     },
     id_usuario: {
       type: Sequelize.INTEGER,
+      model: 'usuario',
       allowNull: true, // Pode ser nulo
     }
   });

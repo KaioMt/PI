@@ -1,19 +1,25 @@
 const express = require("express");
 const ctlrDocumento = express.Router();
+const authenticateToken = require("../authMiddleware");
 
 const Documento = require("../Database/documentos");
 
 
-router.get("/recibo", (req,res) => {
+ctlrDocumento.get("/principal", (req,res) => {
+    res.render("index")
+})
+
+
+ctlrDocumento.get("/recibo", (req,res) => {
     res.render("recibo")
 })
 
 ctlrDocumento.get("/", async (req, res) => {
-    res.statusCode = 200;
     let documentos = await  Documento.findAll({raw: true, order:[
         ['id', 'ASC']
     ]})
-    res.json(documentos)
+
+    res.render("index", { documentos: JSON.stringify(documentos) });
 });
 
 
