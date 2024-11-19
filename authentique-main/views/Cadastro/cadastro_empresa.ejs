@@ -143,24 +143,26 @@
     function CreatEmpresa(event) {
       event.preventDefault();
 
-      let inputRazão = document.getElementById("razao");
-      let inputCNPJ = document.getElementById("cnpj");
-      let inputNome = document.getElementById("nome");
-      let inputEndereço = document.getElementById("endereco");
-      let inputBairro = document.getElementById("bairro");
-      let inputNumero = document.getElementById("numero");
-      let inputEstado = document.getElementById("estado");
+      let inputRazão = document.getElementById("razao").value;
+      let inputCNPJ = document.getElementById("cnpj").value;
+      let inputNome = document.getElementById("nome").value;
+      let inputEndereço = document.getElementById("endereco").value;
+      let inputBairro = document.getElementById("bairro").value;
+      let inputNumero = document.getElementById("numero").value;
+      let inputEstado = document.getElementById("estado").value;
 
-      let Empresa = {
-        cnpj: inputCNPJ.value,
-        nome: inputNome.value,
-        endereco: inputEndereço.value,
-        estado: inputEstado.value,
-        razao: inputRazão.value,
-        bairro: inputBairro.value,
-        numero: inputNumero.value,
+      if (!inputEstado & !inputNumero & !inputBairro & !inputEndereço & !inputNome & !inputCNPJ & !inputRazão) {
+        alert("Preencha todos os campos");
+      }else{
+    let Empresa = {
+        cnpj: inputCNPJ,
+        nome: inputNome,
+        endereco: inputEndereço,
+        estado: inputEstado,
+        razao: inputRazão,
+        bairro: inputBairro,
+        numero: inputNumero,
       };
-      if (!Empresa) {
         axios
           .post("http://localhost:8080/empresa", Empresa)
           .then((response) => {
@@ -172,8 +174,6 @@
           .catch((err) => {
             console.log(err);
           });
-      }else{
-		alert("Preencha todos os campos");
 	  }
     }
   </script>

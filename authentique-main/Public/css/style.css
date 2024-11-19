@@ -18,20 +18,21 @@ body {
 ul {
 	list-style-type: none;
 	overflow:auto;
-	background-color: #333;
 	position:fixed;
 	width: 100%;
+	background-color: #32be8f;
   }
   
   li {
 	float: left;
+	margin: 0.5%;
   }
   
   li a {
 	display: block;
 	color: white;
 	text-align: center;
-	padding: 14px 16px;
+	padding: 10px 20px;
 	text-decoration: none;
   }
   
@@ -41,7 +42,7 @@ ul {
   
   .active {
 	border: solid 0.5px black;
-	background-color: #32be8f;
+	background-color: #333;
   }
 
 .title{
@@ -75,6 +76,8 @@ ul {
 	flex-direction:column;
 	align-items: center;
 	justify-content: center;
+	background-color: #32be8f;
+
 }
 
 #container_recibo{
@@ -242,7 +245,6 @@ form {
 	background: none;
 	padding: 0.5rem 0.7rem;
 	font-size: 1.2rem;
-	color: #555;
 	font-family: 'poppins', sans-serif;
 }
 

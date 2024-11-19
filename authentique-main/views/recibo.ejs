@@ -12,24 +12,24 @@
 
 <body class="body_recibo">
 
-        <div class="container_centro" id="container_recibo">
-            <h1 class="titulodocum" id="titulogeral">Documento</h1>
-            <form>
-                <div>
-                    <h5 class="titulodocum">Informe o destinatário:</h5>
-                    <input id="destinatario" type="email" name="destinatario">
-                </div>
-                <h5 class="titulodocum">Título do documento:</h5>
-                <input type="text" name="title" id="titulodoc">
-                <br><br>
-                <textarea name="documento" maxlength="240" cols="100" rows="25" id="Doc"></textarea>
+    <div class="container_centro" id="container_recibo">
+        <h1 class="titulodocum" id="titulogeral">Documento</h1>
+        <form>
+            <div>
+                <h5 class="titulodocum">Informe o destinatário:</h5>
+                <input id="destinatario" type="email" name="destinatario">
+            </div>
+            <h5 class="titulodocum">Título do documento:</h5>
+            <input type="text" name="title" id="titulodoc">
+            <br><br>
+            <textarea name="documento" maxlength="240" cols="100" rows="25" id="Doc"></textarea>
 
-                <button id="limpardocumento" class="imprimir" onclick="updateCreatDoc(event)">Salvar Documento</button>
-                <button id="limpardocumento" class="imprimir" onclick="Voltar()">Cancelar</button>
+            <button id="limpardocumento" class="imprimir" onclick="updateCreatDoc(event)">Salvar Documento</button>
+            <button id="limpardocumento" class="imprimir" onclick="Voltar()">Cancelar</button>
 
-        </div>
+    </div>
 
-        <br>
+    <br>
 
 </body>
 
@@ -48,17 +48,13 @@
     function updateCreatDoc(event) {
         event.preventDefault();
 
-        let inputTitle = document.getElementById("titulodoc");
-        let inputDest = document.getElementById("destinatario");
-        let inputDoc = document.getElementById("Doc");
+        let inputTitle = document.getElementById("titulodoc").value;
+        let inputDest = document.getElementById("destinatario").value;
+        let inputDoc = document.getElementById("Doc").value;
 
-        let Documento = {
-            titulo: inputTitle.value,
-            doc: inputDoc.value,
-            destinatario: inputDest.value
-        }
-
-        if (!Documento) {
+        if (!inputTitle & !inputDest & !inputDoc) {
+            alert("Preencha todos os campos");
+        } else {
             if (dataReceived) {
                 axios.put("http://localhost:8080/documento/" + id, Documento).then(response => {
                     if (response.status === 200) {
@@ -71,7 +67,11 @@
                 })
             }
             else {
-
+                let Documento = {
+                    titulo: inputTitle,
+                    doc: inputDoc,
+                    destinatario: inputDest
+                }
                 axios.post("http://localhost:8080/documento", Documento).then(response => {
                     if (response.status === 200) {
                         alert("Documento cadastrado")
@@ -82,8 +82,6 @@
                     console.log(err);
                 })
             }
-        } else {
-            alert("Preencha todos os campos");
         }
 
     }

@@ -1,7 +1,7 @@
 <%- include('partials/header')%>
 
 	<body>
-		<img class="wave" src="img/wave.png">
+		<img class="wave" src="../img/wave.png">
 		<div class="container">
 			<div class="img">
 				<img src="../img/login.svg">
@@ -43,16 +43,19 @@
 			event.preventDefault();
 			let email = document.getElementById("Email").value;
 			let senha = document.getElementById("Password").value;
+			if (!email & !senha) {
+				alert("Preencha todos os campos")
+			} else {
+				axios.post("http://localhost:8080/usuario/login", {
+					email,
+					senha
+				}).then(res => {
+					window.location.href = `http://localhost:8080/principal`;
 
-			axios.post("http://localhost:8080/usuario/login", {
-				email,
-				senha
-			}).then(res => {
-				window.location.href = `http://localhost:8080/principal`;
-
-			}).catch(err => {
-				alert(err.mensagem)
-			})
+				}).catch(err => {
+					alert("Login inválido")
+				})
+			}
 		}
 	</script>
 	<script type="text/javascript" src="../js/main.js"></script>

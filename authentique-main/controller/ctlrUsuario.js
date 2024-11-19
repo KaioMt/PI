@@ -24,8 +24,7 @@ ctlrUsuario.post("/login", async (req, res) => {
 
         if(email != undefined & senha != undefined){
         try {
-          // let usuario = await Usuario.findOne({ where: { email, senha } });
-          let usuario = email
+          let usuario = await Usuario.findOne({ where: { email, senha } });
       
           if (!usuario) {
             return res.status(401).json({ mensagem: 'Credenciais inválidas' });

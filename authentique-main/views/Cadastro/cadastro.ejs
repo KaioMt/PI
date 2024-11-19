@@ -88,17 +88,20 @@
     function CreatUser(event) {
       event.preventDefault();
 
-      let inputName = document.getElementById("name");
-      let inputEmail = document.getElementById("email");
-      let inputSenha = document.getElementById("senha");
+      let inputName = document.getElementById("name").value;
+      let inputEmail = document.getElementById("email").value;
+      let inputSenha = document.getElementById("senha").value;
 
-      let User = {
-        nome: inputName.value,
-        email: inputEmail.value,
-        senha: inputSenha.value,
+
+      if (!inputName & !inputEmail & !inputSenha) {
+        alert("Preencha todos os campos");
+      } else {
+        let User = {
+        nome: inputName,
+        email: inputEmail,
+        senha: inputSenha,
       };
-      if (!User) {
-        axios
+      axios
           .post("http://localhost:8080/usuario", User)
           .then((response) => {
             if (response.status === 200) {
@@ -110,8 +113,7 @@
           .catch((err) => {
             console.log(err);
           });
-      } else {
-        alert("Preencha todos os campos");
+       
       }
     }
   </script>
