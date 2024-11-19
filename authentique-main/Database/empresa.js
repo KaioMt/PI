@@ -13,31 +13,43 @@ const Empresa = connection.define('Empresa', {
   },
   Nome: {
     type: Sequelize.STRING(255),
-    allowNull: false
+    allowNull: true
   },
   Endereco: {
     type: Sequelize.STRING(255),
-    allowNull: true
+    allowNull: false
   },
-  Telefone: {
+  Estado: {
     type: Sequelize.STRING(255),
-    allowNull: true
+    allowNull: false
   },
   Id_documento: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.INTEGER(100),
     allowNull: true,
     references: {
-      model: 'documento',  // Supondo que você tenha uma tabela 'documento'
+      model: 'documentos',
       key: 'Id'
     }
+  },
+  Razao: {
+    type: Sequelize.STRING(255),
+    allowNull: false
+  }, 
+   Bairro: {
+    type: Sequelize.STRING(255),
+    allowNull: false
+  },
+  Numero: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 }, {
   tableName: 'empresa',
   timestamps: false, // Remova se você quiser timestamps automáticos (createdAt, updatedAt)
 });
 
-//connection.sync()
-//.then(() => console.log('Tabela Empresa criada ou sincronizada com sucesso!'))
-//.catch(err => console.error('Erro ao sincronizar a tabela Empresa:', err));
+// connection.sync()
+// .then(() => console.log('Tabela Empresa criada ou sincronizada com sucesso!'))
+// .catch(err => console.error('Erro ao sincronizar a tabela Empresa:', err));
 
 module.exports = Empresa;

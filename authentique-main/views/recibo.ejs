@@ -74,7 +74,7 @@
             axios.post("http://localhost:8080/documento", Documento).then(response => {
                 if (response.status === 200) {
                     alert("Documento cadastrado")
-                    window.location.href = "http://localhost:8080/principal?";
+                    window.location.href = "http://localhost:8080/principal";
                     localStorage.clear();
                 }
             }).catch(err => {
@@ -87,7 +87,7 @@
     function Voltar(){
         event.preventDefault();
 
-        window.location.href = "http://localhost:8080/principal?";
+        window.location.href = "http://localhost:8080/principal";
         localStorage.clear();
     }
 </script>

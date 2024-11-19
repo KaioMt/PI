@@ -57,7 +57,7 @@
 					</div>
 				</div>
 				<button class="btn" onclick="CreatUser(event)">Cadastrar</button>
-				<a href="/principal" id="cadastro-login">Fazer login com conta já existente</a>
+				<a href="/usuario/login" id="cadastro-login">Fazer login com conta já existente</a>
 			</form>
 		</div>
 	</div>
@@ -70,6 +70,7 @@
     function CreatUser(event) {
         event.preventDefault();
         
+		
         let inputName = document.getElementById("name");
         let inputEmail = document.getElementById("email");
         let inputSenha = document.getElementById("senha");

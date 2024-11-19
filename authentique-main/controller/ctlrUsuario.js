@@ -48,6 +48,7 @@ ctlrUsuario.post("/login", async (req, res) => {
       }
 });
 
+
 ctlrUsuario.post("/", (req, res) => {
 
   let {nome, email, senha} = req.body;

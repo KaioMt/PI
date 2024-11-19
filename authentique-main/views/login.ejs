@@ -16,7 +16,7 @@
 						</div>
 						<div class="div">
 							<h5>Usuário</h5>
-							<input type="text" class="input" required>
+							<input type="text" id="Email" class="input" required>
 						</div>
 					</div>
 					<div class="input-div pass">
@@ -25,11 +25,11 @@
 						</div>
 						<div class="div">
 							<h5>Senha</h5>
-							<input type="password" class="input" required>
+							<input type="password" id="Password" class="input" required>
 						</div>
 					</div>
 					<a href="/recuperar">Esqueceu sua senha?</a>
-					<button class="btn" onclick=" logar()">Login</button>
+					<button class="btn" onclick=" login()">Login</button>
 					<a href="/usuario/cadastro" id="cadastro-login">Cadastre-se</a>
 				</form>
 			</div>
@@ -39,19 +39,19 @@
 	<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
 	<script>
 
-		let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwibm9tZSI6InRlc3RlIiwiZW1haWwiOiJ0ZXN0ZSIsImVtcHJlc2EiOm51bGwsImlhdCI6MTczMTg5MTQ4NCwiZXhwIjoxNzMxOTM0Njg0fQ.cUqkncgjkG6RQJneJCA9-27G8Cgz8wpynQT3w_X24cg"
-		function logar() {
+		function login() {
 			event.preventDefault();
-			
-			let axiosConfig = {
-				headers: {
-					Authorization: "Bearer" + token
-				}
-			}
-			axios.get("http://localhost:8080/documento/principal", axiosConfig).then(response => {
+			let email = document.getElementById("Email").value;
+			let senha = document.getElementById("Password").value;
 
-			}).cath(error => {
-				console.log(error)
+			axios.post("http://localhost:8080/usuario/login", {
+				email,
+				senha
+			}).then(res => {
+				let token = res.data.Token;
+
+			}).catch(err => {
+				alert("deu pau")
 			})
 		}
 	</script>

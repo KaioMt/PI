@@ -5,11 +5,6 @@ const authenticateToken = require("../authMiddleware");
 const Documento = require("../Database/documentos");
 
 
-ctlrDocumento.get("/principal", (req,res) => {
-    res.render("index")
-})
-
-
 ctlrDocumento.get("/recibo", (req,res) => {
     res.render("recibo")
 })
@@ -19,7 +14,7 @@ ctlrDocumento.get("/", async (req, res) => {
         ['id', 'ASC']
     ]})
 
-    res.render("index", { documentos: JSON.stringify(documentos) });
+    res.json(documentos);
 });
 
 
