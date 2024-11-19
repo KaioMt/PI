@@ -1,56 +1,57 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/css/recibo.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/css/recibo.css" />
     <title>Recibo de Pagamento</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div id="recibo">
-        <h2>Recibo de Pagamento</h2>
-        <input type="email" name="destinatario" id="destinatario">
-        <br><br><br>
+      <h2>Recibo de Pagamento</h2>
+      <input type="email" name="destinatario" id="destinatario" />
+      <br /><br /><br />
 
-        <input type="text" name="title" id="title">
-        <br><br>
-        <textarea name="documento" maxlength="240" cols="100" rows="25" id="documento"></textarea>
+      <input type="text" name="title" id="title" />
+      <br /><br />
+      <textarea
+        name="documento"
+        maxlength="240"
+        cols="100"
+        rows="25"
+        id="documento"
+      ></textarea>
 
-        <button class="imprimir" onclick="editDocumento()">Salvar Documento</button>
-        <button id="limpardocumento" class="imprimir">Limpar documento</button>
-        <a class="imprimir" href="index">Voltar</a>
-
+      <button class="imprimir" onclick="editDocumento()">
+        Salvar Documento
+      </button>
+      <button id="limpardocumento" class="imprimir">Limpar documento</button>
+      <a class="imprimir" href="index">Voltar</a>
     </div>
 
-    <br>
+    <br />
+  </body>
 
-</body>
-
-<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-<script>
-
-    window.addEventListener('message', (event) => {
-        const data = event.data;
-        console.log(data);
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  <script>
+    window.addEventListener("message", (event) => {
+      const data = event.data;
+      console.log(data);
     });
 
     function editDocumento() {
-        let inputTitle = document.getElementById("title");
-        let inputDest = document.getElementById("destinatario");
-        let inputDoc = document.getElementById("documento");
+      let inputTitle = document.getElementById("title");
+      let inputDest = document.getElementById("destinatario");
+      let inputDoc = document.getElementById("documento");
 
-        let Documento = {
-            titulo: inputTitle.value,
-            doc: inputDoc.value,
-            destinatario: inputDest.value
-        }
-
+      let Documento = {
+        titulo: inputTitle.value,
+        doc: inputDoc.value,
+        destinatario: inputDest.value,
+      };
     }
-</script>
-<script type="text/javascript" src="../js/main.js"></script>
-
+  </script>
+  <script type="text/javascript" src="../js/main.js"></script>
 </html>

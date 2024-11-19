@@ -10,9 +10,8 @@
     <title>Inicio</title>
 </head>
 
-<body>
+<body class="body_recibo">
 
-    <%- include('partials/Navbar')%>
         <div class="container_centro" id="container_recibo">
             <h1 class="titulodocum" id="titulogeral">Documento</h1>
             <form>
@@ -25,10 +24,10 @@
                 <br><br>
                 <textarea name="documento" maxlength="240" cols="100" rows="25" id="Doc"></textarea>
 
-        <button id="limpardocumento" class="imprimir" onclick="updateCreatDoc(event)">Salvar Documento</button>
-        <button id="limpardocumento" class="imprimir" onclick="Voltar()">Cancelar</button>
+                <button id="limpardocumento" class="imprimir" onclick="updateCreatDoc(event)">Salvar Documento</button>
+                <button id="limpardocumento" class="imprimir" onclick="Voltar()">Cancelar</button>
 
-    </div>
+        </div>
 
         <br>
 
@@ -48,7 +47,7 @@
 
     function updateCreatDoc(event) {
         event.preventDefault();
-        
+
         let inputTitle = document.getElementById("titulodoc");
         let inputDest = document.getElementById("destinatario");
         let inputDoc = document.getElementById("Doc");
@@ -59,32 +58,37 @@
             destinatario: inputDest.value
         }
 
-        if (dataReceived) {
-            axios.put("http://localhost:8080/documento/" + id, Documento).then(response => {
-                if (response.status === 200) {
-                    alert("Documento atualizado")
-                    window.location.href = "http://localhost:8080/documento/principal";
-                    localStorage.clear();
-                }
-            }).catch(err => {
-                console.log(err);
-            })
-        }
-        else {
-            axios.post("http://localhost:8080/documento", Documento).then(response => {
-                if (response.status === 200) {
-                    alert("Documento cadastrado")
-                    window.location.href = "http://localhost:8080/principal";
-                    localStorage.clear();
-                }
-            }).catch(err => {
-                console.log(err);
-            })
+        if (!Documento) {
+            if (dataReceived) {
+                axios.put("http://localhost:8080/documento/" + id, Documento).then(response => {
+                    if (response.status === 200) {
+                        alert("Documento atualizado")
+                        window.location.href = "http://localhost:8080/documento/principal";
+                        localStorage.clear();
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+            else {
+
+                axios.post("http://localhost:8080/documento", Documento).then(response => {
+                    if (response.status === 200) {
+                        alert("Documento cadastrado")
+                        window.location.href = "http://localhost:8080/principal";
+                        localStorage.clear();
+                    }
+                }).catch(err => {
+                    console.log(err);
+                })
+            }
+        } else {
+            alert("Preencha todos os campos");
         }
 
     }
 
-    function Voltar(){
+    function Voltar() {
         event.preventDefault();
 
         window.location.href = "http://localhost:8080/principal";

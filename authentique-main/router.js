@@ -10,7 +10,8 @@ router.use("/documento",  Doc)
 router.use("/usuario", User)
 router.use("/empresa", Empresa)
 
-router.get("/principal", (req,res) => {
+
+router.get("/principal", authenticateToken,(req,res) => {
     res.render("index")
 })
 

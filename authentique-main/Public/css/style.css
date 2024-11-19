@@ -8,7 +8,6 @@ body {
 	font-family: 'Poppins', sans-serif;
 	height: 200;
 	overflow:auto;
-	background-color: #32be8f;
 }
 
 #cadastroempresa{
@@ -67,17 +66,20 @@ ul {
 	padding: 0 2rem;
 }
 
+.body_recibo{
+	background-color: #32be8f;
+}
+
 .container_centro{
 	display: flex;
 	flex-direction:column;
 	align-items: center;
 	justify-content: center;
-	background-color: #32be8f;
 }
 
 #container_recibo{
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: auto;
 }
 
 

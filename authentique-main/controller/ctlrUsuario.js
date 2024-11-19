@@ -8,6 +8,10 @@ ctlrUsuario.get("/cadastro", (req,res) => {
   res.render("Cadastro/cadastro")
 })
 
+ctlrUsuario.get("/logout", (req,res) => {
+  res.clearCookie("token").redirect("/usuario/login")
+})
+
 
 ctlrUsuario.get("/login", (req,res) => {
   res.render("login")
@@ -20,7 +24,8 @@ ctlrUsuario.post("/login", async (req, res) => {
 
         if(email != undefined & senha != undefined){
         try {
-          let usuario = await Usuario.findOne({ where: { email, senha } });
+          // let usuario = await Usuario.findOne({ where: { email, senha } });
+          let usuario = email
       
           if (!usuario) {
             return res.status(401).json({ mensagem: 'Credenciais inválidas' });
@@ -32,9 +37,9 @@ ctlrUsuario.post("/login", async (req, res) => {
               JWTScret,
               { expiresIn: '12h' }
             );
-          res.status(200).json({ Token: token, 
-            mensagem: 'Login realizado com sucesso' });
-        }
+          res.cookie('token', token, {maxAge: 43200000, httpOnly: true}) 
+          .sendStatus(200)
+          }
         } catch (error) {
           console.error(error);
           return res.status(500).json({ mensagem: 'Erro no servidor' });
@@ -46,7 +51,7 @@ ctlrUsuario.post("/login", async (req, res) => {
           return res.status(400).json({ mensagem: 'Senha é inválido' });
         }
       }
-});
+})
 
 
 ctlrUsuario.post("/", (req, res) => {

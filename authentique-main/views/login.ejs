@@ -48,10 +48,10 @@
 				email,
 				senha
 			}).then(res => {
-				let token = res.data.Token;
+				window.location.href = `http://localhost:8080/principal`;
 
 			}).catch(err => {
-				alert("deu pau")
+				alert(err.mensagem)
 			})
 		}
 	</script>

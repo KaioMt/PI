@@ -1,137 +1,182 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <title>Cadastro usuário</title>
-</head>
+  </head>
 
-<body>
-	<img class="wave" src="../img/wave.png">
-	<div class="container">
-		<div class="img">
-			<img src="../img/cadastro.svg">
-		</div>
-		<div class="login-content" id="cadastroempresa">
-			<form>
-				<img src="../img/avatar.svg">
-				<h2 class="title">Olá, vamos cadastrar sua empresa?</h2>
-				<div class="input-div one">
-					<div class="i">
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="div">
-						<h5>Razão social</h5>
-						<input type="text" name="razao" id="razao" class="input" required>
-					</div>
-				</div>
-				<div class="input-div one">
-					<div class="i">
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="div">
-						<h5>CNPJ</h5>
-						<input type="number" name="cnpj" id="cnpj" class="input" required>
-					</div>
-				</div>
-				<div class="input-div pass">
-					<div class="i">
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="div">
-						<h5>Nome fantasia</h5>
-						<input type="text" name="fantasia" id="nome" class="input" required>
-					</div>
-				</div>
-				<div class="input-div pass">
-					<div class="i">
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="div">
-						<h5>Endereço</h5>
-						<input type="text" name="endereco" id="endereco" class="input" required>
-					</div>
-				</div>
+  <body>
+    <img class="wave" src="../img/wave.png" />
+    <div class="container">
+      <div class="img">
+        <img src="../img/cadastro.svg" />
+      </div>
+      <div class="login-content" id="cadastroempresa">
+        <form>
+          <img src="../img/avatar.svg" />
+          <h2 class="title">Olá, vamos cadastrar sua empresa?</h2>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Razão social</h5>
+              <input
+                type="text"
+                name="razao"
+                id="razao"
+                class="input"
+                required
+              />
+            </div>
+          </div>
+          <div class="input-div one">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>CNPJ</h5>
+              <input
+                type="number"
+                name="cnpj"
+                id="cnpj"
+                class="input"
+                required
+              />
+            </div>
+          </div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Nome fantasia</h5>
+              <input
+                type="text"
+                name="fantasia"
+                id="nome"
+                class="input"
+                required
+              />
+            </div>
+          </div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Endereço</h5>
+              <input
+                type="text"
+                name="endereco"
+                id="endereco"
+                class="input"
+                required
+              />
+            </div>
+          </div>
 
-                <div class="input-div pass">
-					<div class="i">
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="div">
-						<h5>Numero</h5>
-						<input type="number" name="num" id="numero" class="input" required>
-					</div>
-				</div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Numero</h5>
+              <input
+                type="number"
+                name="num"
+                id="numero"
+                class="input"
+                required
+              />
+            </div>
+          </div>
 
-                <div class="input-div pass">
-					<div class="i">
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="div">
-						<h5>Bairro</h5>
-						<input type="text" name="bairro" id="bairro" class="input" required>
-					</div>
-				</div>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Bairro</h5>
+              <input
+                type="text"
+                name="bairro"
+                id="bairro"
+                class="input"
+                required
+              />
+            </div>
+          </div>
 
-                <div class="input-div pass">
-					<div class="i">
-						<i class="fas fa-user"></i>
-					</div>
-					<div class="div">
-						<h5>Estado</h5>
-						<input type="" name="estado" id="estado" class="input" required>
-					</div>
-				</div>
-				<button class="btn" onclick="CreatEmpresa(event)">Cadastrar</button>
-				<a href="http://localhost:8080/usuario/login" id="cadastro-login">Fazer login com conta já existente</a>
-			</form>
-		</div>
-	</div>
-	<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-	<script type="text/javascript" src="../js/main.js"></script>
-
-
-</body>
-<script src="https://kit.fontawesome.com/a81368914c.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-<script>
+          <div class="input-div pass">
+            <div class="i">
+              <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+              <h5>Estado</h5>
+              <input type="" name="estado" id="estado" class="input" required />
+            </div>
+          </div>
+          <button class="btn" onclick="CreatEmpresa(event)">Cadastrar</button>
+          <a href="http://localhost:8080/usuario/login" id="cadastro-login"
+            >Fazer login com conta já existente</a
+          >
+        </form>
+      </div>
+    </div>
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+  </body>
+  <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+  <script>
     function CreatEmpresa(event) {
-        event.preventDefault();
-        
-		
-        let inputRazão = document.getElementById("razao");
-        let inputCNPJ = document.getElementById("cnpj");
-        let inputNome = document.getElementById("nome");
-		let inputEndereço = document.getElementById("endereco");
-		let inputBairro = document.getElementById("bairro");
-		let inputNumero = document.getElementById("numero");
-		let inputEstado = document.getElementById("estado")
+      event.preventDefault();
 
-        let Empresa = {
-			cnpj: inputCNPJ.value,
-			nome: inputNome.value,
-			endereco: inputEndereço.value,
-			estado: inputEstado.value,
-			razao: inputRazão.value,
-			bairro: inputBairro.value,
-			numero: inputNumero.value,
+      let inputRazão = document.getElementById("razao");
+      let inputCNPJ = document.getElementById("cnpj");
+      let inputNome = document.getElementById("nome");
+      let inputEndereço = document.getElementById("endereco");
+      let inputBairro = document.getElementById("bairro");
+      let inputNumero = document.getElementById("numero");
+      let inputEstado = document.getElementById("estado");
 
-        }
-            axios.post("http://localhost:8080/empresa", Empresa).then(response => {
-                if (response.status === 200) {
-                    alert("Empresa cadastrado")
-                    window.location.href = "http://localhost:8080/usuario/login";
-                }
-            }).catch(err => {
-                console.log(err);
-            })
-        }
-</script>
+      let Empresa = {
+        cnpj: inputCNPJ.value,
+        nome: inputNome.value,
+        endereco: inputEndereço.value,
+        estado: inputEstado.value,
+        razao: inputRazão.value,
+        bairro: inputBairro.value,
+        numero: inputNumero.value,
+      };
+      if (!Empresa) {
+        axios
+          .post("http://localhost:8080/empresa", Empresa)
+          .then((response) => {
+            if (response.status === 200) {
+              alert("Empresa cadastrado");
+              window.location.href = "http://localhost:8080/usuario/login";
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }else{
+		alert("Preencha todos os campos");
+	  }
+    }
+  </script>
 
-<script type="text/javascript" src="../js/main.js"></script>
-
+  <script type="text/javascript" src="../js/main.js"></script>
 </html>
