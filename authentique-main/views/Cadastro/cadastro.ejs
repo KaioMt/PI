@@ -70,7 +70,7 @@
             </div>
             <div class="div">
               <h5>Confirmar Senha</h5>
-              <input type="password" name="conf_senha" class="input" required />
+              <input type="password" name="conf_senha" id="Conf_senha" class="input" required />
             </div>
           </div>
           <button class="btn" onclick="CreatUser(event)">Cadastrar</button>
@@ -91,9 +91,9 @@
       let inputName = document.getElementById("name").value;
       let inputEmail = document.getElementById("email").value;
       let inputSenha = document.getElementById("senha").value;
+      let Senha = document.getElementById("Conf_senha").value
 
-
-      if (!inputName & !inputEmail & !inputSenha) {
+      if (!inputName & !inputEmail & !inputSenha & !Senha) {
         alert("Preencha todos os campos");
       } else {
         let User = {
