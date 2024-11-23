@@ -55,11 +55,16 @@
         if (!inputTitle & !inputDest & !inputDoc) {
             alert("Preencha todos os campos");
         } else {
+            let Documento = {
+                titulo: inputTitle,
+                doc: inputDoc,
+                destinatario: inputDest
+            }
             if (dataReceived) {
                 axios.put("http://localhost:8080/documento/" + id, Documento).then(response => {
                     if (response.status === 200) {
                         alert("Documento atualizado")
-                        window.location.href = "http://localhost:8080/documento/principal";
+                        window.location.href = "http://localhost:8080/principal";
                         localStorage.clear();
                     }
                 }).catch(err => {
@@ -67,11 +72,6 @@
                 })
             }
             else {
-                let Documento = {
-                    titulo: inputTitle,
-                    doc: inputDoc,
-                    destinatario: inputDest
-                }
                 axios.post("http://localhost:8080/documento", Documento).then(response => {
                     if (response.status === 200) {
                         alert("Documento cadastrado")

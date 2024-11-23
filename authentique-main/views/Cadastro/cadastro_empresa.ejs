@@ -13,6 +13,22 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
     <title>Cadastro usuário</title>
+    <script>
+      function mascaraCNPJ(cnpj) {
+        cnpj = cnpj.replace(/\D/g, ''); // Remove tudo o que não for número
+        cnpj = cnpj.replace(/^(\d{2})(\d)/, '$1.$2'); // Adiciona ponto
+        cnpj = cnpj.replace(/(\d{3})(\d)/, '$1.$2'); // Adiciona ponto
+        cnpj = cnpj.replace(/(\d{3})(\d)/, '$1/$2'); // Adiciona barra
+        cnpj = cnpj.replace(/(\d{4})(\d)/, '$1-$2'); // Adiciona hífen
+        return cnpj;
+      }
+  
+      function aplicarMascaraCNPJ() {
+        var cnpjInput = document.getElementById('cnpj');
+        cnpjInput.value = mascaraCNPJ(cnpjInput.value);
+      }
+    </script>
+  
   </head>
 
   <body>
@@ -47,10 +63,11 @@
             <div class="div">
               <h5>CNPJ</h5>
               <input
-                type="number"
+                type="text"
                 name="cnpj"
                 id="cnpj"
                 class="input"
+                oninput="aplicarMascaraCNPJ()" maxlength="18"
                 required
               />
             </div>
@@ -154,6 +171,13 @@
       if (!inputEstado & !inputNumero & !inputBairro & !inputEndereço & !inputNome & !inputCNPJ & !inputRazão) {
         alert("Preencha todos os campos");
       }else{
+        // function removerMascaraCNPJ() {
+        //   return cnpj.replace(/\D/g, '');
+        // }
+
+        
+        // inputCNPJ = removerMascaraCNPJ(inputCNPJ.value);
+
     let Empresa = {
         cnpj: inputCNPJ,
         nome: inputNome,

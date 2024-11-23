@@ -51,7 +51,8 @@ ctlrDocumento.post("/", async (req, res) => {
         Titulo: titulo,
         Conteudo: doc,
         Status: 1,
-        Email_dest: destinatario
+        Email_dest: destinatario,
+        id_usuario: 16
     });
 
     res.sendStatus(200);

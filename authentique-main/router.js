@@ -6,7 +6,7 @@ const Doc = require("./controller/ctlrDocumento")
 const User = require("./controller/ctlrUsuario")
 const Empresa = require("./controller/ctlrEmpresa")
 
-router.use("/documento",  Doc)
+router.use("/documento",authenticateToken , Doc)
 router.use("/usuario", User)
 router.use("/empresa", Empresa)
 
